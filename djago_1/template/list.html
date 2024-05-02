@@ -1,0 +1,35 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static '/css/style.css' %}">
+<table>
+    <tr>
+      <th>No  </th>
+      <th> name</th>
+      <th>age</th>
+      <th>place</th>
+      <th>email</th>
+      <th>class_no</th>
+      <th>phone</th>
+      <th>photos</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    {% for eop in orm %}
+    <tr>
+        
+        
+      <td>#</td> 
+      <td>{{eop.name}}</td>
+      <td>{{eop.age}}</td>
+      <td>{{eop.place}}</td>
+      <td>{{eop.email}}</td>
+      <td>{{eop.class_no}}</td>
+      <td>{{eop.phone}}</td>
+      <td><img src="{{eop.photos.url}}" alt="" style="height: 50px; width: 50px;"></td>
+      
+      <td><a href="{% url 're_create' eop.id %}">Edit</a> </td>
+      <td><a href="{% url 'delete' eop.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+    
+  </table>
